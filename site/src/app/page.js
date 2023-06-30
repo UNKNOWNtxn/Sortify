@@ -19,7 +19,7 @@ export default function Sortify() {
   return (
     <div className='min-w-screen min-h-screen bg-gradient-to-b from-sky-400 via-sky-300 to-sky-100'>
 
-      <div className='flex flex-col justify-center items-center p-5 mb-20'>
+      <div className='flex flex-col justify-center items-center p-5 mb-14'>
         <div className='bg-light-gray rounded-xl p-5 drop-shadow-xl	'>
           <h1 className='sm:text-xl md:text-2xl font-pressStart animate-appearFromBottom1 text-4xl text-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-800 via-sky-400 to-sky-200'>Sortify</h1>
           <p className='sm:text-xxs md:text-sm font-pressStart animate-appearFromBottom2 text-base text-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-800 via-sky-400 to-sky-200'>Visualize your sorting algorithms with ease </p>
@@ -28,7 +28,7 @@ export default function Sortify() {
 
       <div className='flex flex-col justify-center items-center space-y-2'>
         <input
-          className='bg-light-gray text-center rounded-md'
+          className='bg-light-gray text-center rounded-md drop-shadow-xl'
           onChange={handleInputChange}
           value={inputValue}
           inputMode="numeric"
@@ -37,14 +37,14 @@ export default function Sortify() {
           placeholder="length"
         />
         <button
-          className='bg-light-gray text-center rounded-md'
+          className='bg-light-gray text-center rounded-md drop-shadow-xl px-2'
           onClick={handleSubmit}
         >
           Enter
         </button>
         <h3 className='font-bebas text-xl'>Items to be in array: {arrayLength}</h3>
       </div>
-      
+
     </div>
   )
 }
