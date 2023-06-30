@@ -22,7 +22,7 @@ export default function Sortify() {
       <div className='flex flex-col justify-center items-center p-5 mb-14'>
         <div className='bg-light-gray rounded-xl p-5 drop-shadow-xl	'>
           <h1 className='sm:text-xl md:text-2xl font-pressStart animate-appearFromBottom1 text-4xl text-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-800 via-sky-400 to-sky-200'>Sortify</h1>
-          <p className='sm:text-xxs md:text-sm font-pressStart animate-appearFromBottom2 text-base text-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-800 via-sky-400 to-sky-200'>Visualize your sorting algorithms with ease </p>
+          <p className='sm:text-xxs md:text-sm font-pressStart animate-appearFromBottom2 text-base text-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-800 via-sky-400 to-sky-200'>visualize your sorting algorithms with ease </p>
         </div>
       </div>
 
