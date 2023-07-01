@@ -41,10 +41,10 @@ export default function Sortify() {
                   <div className='flex flex-col items-center justify-center w-1/2 sm:w-full'>
                     <label className='font-pressStart text-xxs text-center'>Algoithm Type</label>
                     <select className='text-xxs rounded-b-2xl font-pressStart p-1 w-full text-center' id="cars">
-                      <option value="volvo">Bubble</option>
-                      <option value="saab">Merge</option>
-                      <option value="opel">Insert</option>
-                      <option value="audi">Heap</option>
+                      <option className='text-center' value="bubble">Bubble</option>
+                      <option className='text-center' value="merge">Merge</option>
+                      <option className='text-center' value="insert">Insert</option>
+                      <option className='text-center' value="heap">Heap</option>
                     </select>
                   </div>
                 </div>
