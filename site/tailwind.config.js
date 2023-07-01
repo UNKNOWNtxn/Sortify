@@ -8,9 +8,10 @@ module.exports = {
     extend: {
       boxShadow: {
         'offset': '20px 20px 0px 0px #38B2AC',
-        'offset-hover': '50px 50px 0px 0px #38B2AC', // This assumes "bright-green" is #38B2AC, adjust as needed
+        'offset-hover': '50px 50px 0px 0px #38B2AC',
       },
       animation: {
+        'marquee': 'marquee 10s linear infinite',
         fadeIn: 'fadeIn 2s ease-in-out',
         dropIn: 'dropIn 1s ease-in-out',
         dropIn2: 'dropIn 1.5s ease-in-out',
@@ -52,7 +53,7 @@ module.exports = {
       },
     },
     fontSize: {
-      xxs: '0.45rem',
+      xxs: '0.69rem',
       xs: '0.8rem',
       sm: '1rem',
       base: '1.15rem',
