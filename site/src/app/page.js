@@ -26,7 +26,7 @@ export default function Sortify() {
           <p className='sm:text-xxs md:text-sm font-pressStart animate-appearFromBottom2 text-base text-bold text-center text-transparent bg-clip-text bg-gradient-to-b from-sky-800 via-sky-400 to-sky-200'>visualize your sorting algorithms with ease </p>
         </div>
 
-        <div className='flex flex-grow w-full justify-center rounded-xl p-3 mt-6 bg-light-gray drop-shadow-xl mb-4'>
+        <div className='flex flex-grow w-full justify-center rounded-xl p-3 mt-6 bg-light-gray drop-shadow-xl'>
           <div className='flex-grow flex flex-col items-center rounded-xl bg-transparent border-8 border-sky-400'>
             <div className='basis-10/12 min-w-full bg-black'>
 
@@ -55,14 +55,11 @@ export default function Sortify() {
         </div>
       </div>
 
-      <div className=' absolute inset-x-0 bottom-0 overflow-hidden'>
-  <p className='whitespace-nowrap text-center text-2xl text-black hover:underline hover:curs font-bebas animate-marquee'>
-    <Link target="_blank" href="https://github.com/UNKNOWNtxn/Sortify">An Open Source Project Managed By Reece Bailey</Link>
-  </p>
-</div>
-
-
-
+      <div className='overflow-hidden'>
+        <p className='whitespace-nowrap text-center text-2xl text-black hover:underline hover:curs font-bebas animate-marquee'>
+          <Link target="_blank" href="https://github.com/UNKNOWNtxn/Sortify">An Open Source Project Managed By Reece Bailey</Link>
+        </p>
+      </div>
 
     </div>
   )
