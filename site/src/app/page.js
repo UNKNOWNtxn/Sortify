@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link';
 
 export default function Sortify() {
 
@@ -47,7 +48,7 @@ export default function Sortify() {
                     </select>
                   </div>
                 </div>
-                <button type="submit" className='text-center text-xxs font-pressStart mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-center'>Submit</button>
+                <button type="submit" className='text-center text-xxs font-pressStart mt-3 bg-sky-400 hover:bg-gradient-to-b from-sky-400 via-sky-300 to-sky-100 text-white font-bold py-2 px-4 rounded self-center'>Submit</button>
               </form>
             </div>
           </div>
@@ -55,8 +56,8 @@ export default function Sortify() {
       </div>
 
       <div className=' absolute inset-x-0 bottom-0 overflow-hidden'>
-  <p className='whitespace-nowrap text-center text-2xl text-black font-bebas animate-marquee'>
-    An Open Source Project Managed By Reece Bailey
+  <p className='whitespace-nowrap text-center text-2xl text-black hover:underline hover:curs font-bebas animate-marquee'>
+    <Link target="_blank" href="https://github.com/UNKNOWNtxn/Sortify">An Open Source Project Managed By Reece Bailey</Link>
   </p>
 </div>
 
