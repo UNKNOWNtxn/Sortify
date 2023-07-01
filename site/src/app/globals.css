@@ -21,3 +21,8 @@
     transform: translateX(-100%);
   }
 }
+
+select {
+  display: block;
+  margin: 0 auto;
+  }
