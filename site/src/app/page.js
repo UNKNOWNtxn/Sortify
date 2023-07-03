@@ -136,11 +136,7 @@ export default function Sortify() {
             <div className='basis-2/12 flex flex-col items-center justify-start w-full m-3'>
               <div className='flex flex-col items-center justify-center'>
                 <div className='flex flex-row sm:flex-col sm:space-y-3 items-center justify-center space-x-3 sm:space-x-0'>
-                  <div className='flex flex-col items-center justify-center w-1/2 sm:w-full'>
-                    <label className='font-pressStart text-xxs text-center'>Array length</label>
-                    <input className='rounded-b-2xl w-full text-center font-pressStart text-xxs p-0.5' placeholder='length' />
-                  </div>
-                  <div className='flex flex-col items-center justify-center w-1/2 sm:w-full'>
+                  <div className='flex flex-col items-center justify-center sm:w-full'>
                     <label className='font-pressStart text-xxs text-center'>Algoithm Type</label>
                     <select
                       className='text-xxs rounded-b-2xl font-pressStart p-1 w-full text-center'
@@ -156,7 +152,7 @@ export default function Sortify() {
                   </div>
                 </div>
                 <div className='flex flex-row space-x-3'>
-                  <button onClick={resetArray} className='text-center text-xxs font-pressStart mt-3 bg-sky-400 hover:bg-gradient-to-b from-sky-400 via-sky-300 to-sky-100 text-white font-bold py-2 px-4 rounded self-center'>New Array</button>
+                  <button onClick={resetArray} className='text-center text-xxs font-pressStart mt-3 bg-sky-400 hover:bg-gradient-to-b from-sky-400 via-sky-300 to-sky-100 text-white font-bold py-2 px-4 rounded self-center'>Reset</button>
                   <button onClick={sortArray} className='text-center text-xxs font-pressStart mt-3 bg-sky-400 hover:bg-gradient-to-b from-sky-400 via-sky-300 to-sky-100 text-white font-bold py-2 px-4 rounded self-center'>Sort</button>
                 </div>
               </div>
