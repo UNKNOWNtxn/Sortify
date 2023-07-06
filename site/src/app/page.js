@@ -13,9 +13,30 @@ export default function Sortify() {
   const [playSound, { stop: stopSound }] = useSound(Sound, { loop: true });
   const playSoundRef = useRef();
   const stopSoundRef = useRef();
-
+  const minValue = 0;
+  const maxValue = 100;
+  const minFrequency = 100;
+  const maxFrequency = 1000;
+  let audioCtx = null;
   let continueAnimation = true;
 
+  function playNote(freq, duration) {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext || webkitAudioContext)();
+    }
+    const osc = audioCtx.createOscillator();
+    osc.frequency.value = freq;
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+    const node = audioCtx.createGain();
+    node.gain.value = 0.1;
+    osc.connect(node);
+    node.connect(audioCtx.destination);
+  }
+
+  function arrayValueToFrequency(value, minValue, maxValue, minFrequency, maxFrequency) {
+    return ((value - minValue) / (maxValue - minValue)) * (maxFrequency - minFrequency) + minFrequency;
+  }
 
   const sortArray = () => {
     switch (sortFunction) {
@@ -57,7 +78,6 @@ export default function Sortify() {
 
   const mergeSort = () => {
     continueAnimation = true;
-    playSoundRef.current();
     const animations = sortingAlgorithms.mergeSort(mainArray);
     const totalAnimationTime = animations.length * 10;
     for (let i = 0; i < animations.length; i++) {
@@ -80,6 +100,8 @@ export default function Sortify() {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
             barOneStyle.height = `${newHeight}px`;
+            const freq = arrayValueToFrequency(newHeight, minValue, maxValue, minFrequency, maxFrequency);
+            playNote(freq, 0.1);
           }
         }, i * 10);
       }
@@ -89,7 +111,6 @@ export default function Sortify() {
 
   const bubbleSort = () => {
     continueAnimation = true;
-    playSoundRef.current();
     const animations = sortingAlgorithms.bubbleSort(mainArray);
     const totalAnimationTime = animations.length * 10;
     for (let i = 0; i < animations.length; i++) {
@@ -112,6 +133,8 @@ export default function Sortify() {
             const [barIdx, newHeight] = animations[i];
             const barStyle = arrayBars[barIdx].style;
             barStyle.height = `${newHeight}px`;
+            const freq = arrayValueToFrequency(newHeight, minValue, maxValue, minFrequency, maxFrequency);
+            playNote(freq, 0.1);
           }
         }, i * 10);
       }
@@ -121,7 +144,6 @@ export default function Sortify() {
 
   const insertionSort = () => {
     continueAnimation = true;
-    playSoundRef.current();
     const animations = sortingAlgorithms.insertionSort(mainArray);
     const totalAnimationTime = animations.length * 10;
     for (let i = 0; i < animations.length; i++) {
@@ -163,6 +185,8 @@ export default function Sortify() {
             return;
           }
           barStyle.height = `${barTwoIdxOrNewHeight}px`;
+          const freq = arrayValueToFrequency(barTwoIdxOrNewHeight, minValue, maxValue, minFrequency, maxFrequency);
+          playNote(freq, 0.1);
         }
       }, i * 10);
     }
@@ -171,7 +195,6 @@ export default function Sortify() {
 
   const heapSort = () => {
     continueAnimation = true;
-    playSoundRef.current();
     const animations = sortingAlgorithms.heapSort(mainArray);
     const totalAnimationTime = animations.length * 10;
     for (let i = 0; i < animations.length; i++) {
@@ -194,6 +217,8 @@ export default function Sortify() {
             const [barIdx, newHeight] = animations[i];
             const barStyle = arrayBars[barIdx].style;
             barStyle.height = `${newHeight}px`;
+            const freq = arrayValueToFrequency(newHeight, minValue, maxValue, minFrequency, maxFrequency);
+            playNote(freq, 0.1);
           }
         }, i * 10);
       }
@@ -203,7 +228,6 @@ export default function Sortify() {
 
   const quickSort = () => {
     continueAnimation = true;
-    playSoundRef.current();
     const animations = sortingAlgorithms.quickSort(mainArray.slice());
     const totalAnimationTime = animations.length * 10;
     for (let i = 0; i < animations.length; i++) {
@@ -224,6 +248,10 @@ export default function Sortify() {
               barTwoStyle.height = tempHeight;
               barOneStyle.backgroundColor = 'green';
               barTwoStyle.backgroundColor = 'green';
+              const freq1 = arrayValueToFrequency(parseInt(barOneStyle.height), minValue, maxValue, minFrequency, maxFrequency);
+              playNote(freq1, 0.1);
+              const freq2 = arrayValueToFrequency(parseInt(barTwoStyle.height), minValue, maxValue, minFrequency, maxFrequency);
+              playNote(freq2, 0.1);
               break;
             default:
               barOneStyle.backgroundColor = 'red';
