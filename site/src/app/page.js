@@ -318,7 +318,7 @@ export default function Sortify() {
 
       <div className='overflow-hidden'>
         <p className='whitespace-nowrap text-center text-2xl text-black hover:underline hover:curs font-bebas animate-marquee'>
-          <Link target="_blank" href="https://github.com/UNKNOWNtxn/Sortify">An Open Source Project Managed By Reece Bailey</Link>
+          <Link target="_blank" href="https://github.com/reecebaileyy/Sortify">An Open Source Project Managed By Reece Bailey</Link>
         </p>
       </div>
 
