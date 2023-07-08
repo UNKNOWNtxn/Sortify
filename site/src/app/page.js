@@ -148,10 +148,6 @@ export default function Sortify() {
     const totalAnimationTime = animations.length * 10;
     for (let i = 0; i < animations.length; i++) {
       setTimeout(() => {
-        if (!continueAnimation) {
-          console.log("Animation stopped");
-          return;
-        }
 
         const arrayBars = document.getElementsByClassName('array-bar');
         const [operation, barOneIdx, barTwoIdxOrNewHeight] = animations[i];
@@ -276,10 +272,6 @@ export default function Sortify() {
     }
   }
 
-
-
-
-
   useEffect(() => {
     resetArray();
   }, [])
@@ -302,18 +294,23 @@ export default function Sortify() {
           <p className='sm:text-xxs md:text-sm font-pressStart animate-appearFromBottom2 text-base text-bold text-center text-black'>visualize your sorting algorithms with ease </p>
         </div>
 
-        <div className='flex flex-grow w-full justify-center rounded-xl p-3 mt-6 bg-light-gray drop-shadow-xl'>
+        <div className='flex flex-grow w-full justify-center rounded-xl p-3 mt-6 bg-light-gray drop-shadow-xl max-h-[75vh] overflow-auto'>
           <div className='flex-grow flex flex-col items-center rounded-xl bg-transparent border-8 border-sky-400'>
-            <div className='flex justify-center basis-10/12 min-w-full bg-black'>
+            <div className='flex justify-center basis-10/12 h-1/2 min-w-full bg-black'>
               <div className="relative">
-                {mainArray.map((value, id) => (
-                  <div
-                    className="w-0.5 xl:mx-0.5 lg:mx-0.5 md:mx-0.5 md:w-[0.5px] sm:mx-[0.07rem] sm:w-[0.015rem] inline-block mx-1 array-bar bg-white"
-                    key={id}
-                    style={{ height: `${value}px` }}
-                  >
-                  </div>
-                ))}
+                {mainArray.map((value, id) => {
+                  // Calculate the normalized height as a percentage
+                  let normalizedHeight = (value / Math.max(...mainArray)) * 100;
+
+                  return (
+                    <div
+                      className="w-0.5 xl:mx-0.5 lg:mx-0.5 md:mx-0.5 md:w-[0.5px] sm:mx-[0.07rem] sm:w-[0.015rem] inline-block mx-1 array-bar bg-white"
+                      key={id}
+                      style={{ height: `${normalizedHeight}%` }}
+                    >
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className='basis-2/12 flex flex-col items-center justify-start w-full m-3'>
