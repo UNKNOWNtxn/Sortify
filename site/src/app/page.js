@@ -10,11 +10,11 @@ export default function Sortify() {
 
   const [mainArray, setMainArray] = useState([]);
   const [sortFunction, setSortFunction] = useState("bubble");
+  const [maxValue, setMaxValue] = useState(Math.max(...mainArray));
   const [playSound, { stop: stopSound }] = useSound(Sound, { loop: true });
   const playSoundRef = useRef();
   const stopSoundRef = useRef();
   const minValue = 0;
-  const maxValue = 100;
   const minFrequency = 100;
   const maxFrequency = 1000;
   let audioCtx = null;
@@ -277,6 +277,10 @@ export default function Sortify() {
   }, [])
 
   useEffect(() => {
+    setMaxValue(Math.max(...mainArray));
+  }, [mainArray]);
+
+  useEffect(() => {
     playSoundRef.current = playSound;
     stopSoundRef.current = stopSound;
   }, [playSound, stopSound]);
@@ -296,17 +300,17 @@ export default function Sortify() {
 
         <div className='flex flex-grow w-full justify-center rounded-xl p-3 mt-6 bg-light-gray drop-shadow-xl max-h-[75vh] overflow-auto'>
           <div className='flex-grow flex flex-col items-center rounded-xl bg-transparent border-8 border-sky-400'>
-            <div className='flex justify-center basis-10/12 h-1/2 min-w-full bg-black'>
+            <div className='flex justify-center basis-10/12 h-1/2 min-w-full bg-black overflow-auto'>
               <div className="relative">
                 {mainArray.map((value, id) => {
-                  // Calculate the normalized height as a percentage
-                  let normalizedHeight = (value / Math.max(...mainArray)) * 100;
+                  // Calculate the height of the current bar as a percentage of the maximum value
+                  let barHeight = (value / maxValue) * 100;
 
                   return (
                     <div
                       className="w-0.5 xl:mx-0.5 lg:mx-0.5 md:mx-0.5 md:w-[0.5px] sm:mx-[0.07rem] sm:w-[0.015rem] inline-block mx-1 array-bar bg-white"
                       key={id}
-                      style={{ height: `${normalizedHeight}%` }}
+                      style={{ height: `${barHeight}%` }}
                     >
                     </div>
                   );
