@@ -303,9 +303,7 @@ export default function Sortify() {
             <div className='flex justify-center basis-10/12 h-1/2 min-w-full bg-black overflow-auto'>
               <div className="relative">
                 {mainArray.map((value, id) => {
-                  // Calculate the height of the current bar as a percentage of the maximum value
                   let barHeight = (value / maxValue) * 100;
-
                   return (
                     <div
                       className="w-0.5 xl:mx-0.5 lg:mx-0.5 md:mx-0.5 md:w-[0.5px] sm:mx-[0.07rem] sm:w-[0.015rem] inline-block mx-1 array-bar bg-white"
