@@ -16,8 +16,8 @@ export default function Sortify() {
   const myRef = useRef(null);
   const stopSoundRef = useRef();
   const minValue = 0;
-  const minFrequency = 40;
-  const maxFrequency = 100;
+  const minFrequency = 200;
+  const maxFrequency = 600;
   let audioCtx = null;
   let continueAnimation = true;
 
