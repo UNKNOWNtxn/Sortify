@@ -13,10 +13,11 @@ export default function Sortify() {
   const [maxValue, setMaxValue] = useState(Math.max(...mainArray));
   const [playSound, { stop: stopSound }] = useSound(Sound, { loop: true });
   const playSoundRef = useRef();
+  const myRef = useRef(null);
   const stopSoundRef = useRef();
   const minValue = 0;
-  const minFrequency = 100;
-  const maxFrequency = 1000;
+  const minFrequency = 40;
+  const maxFrequency = 100;
   let audioCtx = null;
   let continueAnimation = true;
 
@@ -29,7 +30,7 @@ export default function Sortify() {
     osc.start();
     osc.stop(audioCtx.currentTime + duration);
     const node = audioCtx.createGain();
-    node.gain.value = 0.1;
+    node.gain.value = 0.009;
     osc.connect(node);
     node.connect(audioCtx.destination);
   }
@@ -42,18 +43,23 @@ export default function Sortify() {
     switch (sortFunction) {
       case "bubble":
         bubbleSort();
+        myRef.current.scrollIntoView({ behavior: 'smooth' });
         break;
       case "merge":
         mergeSort();
+        myRef.current.scrollIntoView({ behavior: 'smooth' });
         break;
       case "insert":
         insertionSort();
+        myRef.current.scrollIntoView({ behavior: 'smooth' });
         break;
       case "heap":
         heapSort();
+        myRef.current.scrollIntoView({ behavior: 'smooth' });
         break;
       case "quick":
         quickSort();
+        myRef.current.scrollIntoView({ behavior: 'smooth' });
         break;
       default:
         console.error("Invalid sort function");
@@ -304,8 +310,15 @@ export default function Sortify() {
               <div className="relative">
                 {mainArray.map((value, id) => {
                   let barHeight = (value / maxValue) * 100;
+
                   return (
                     <div
+                      ref={el => {
+                        // If this is the last element in the array, assign the ref
+                        if (id === mainArray.length - 1) {
+                          myRef.current = el;
+                        }
+                      }}
                       className="w-0.5 xl:mx-0.5 lg:mx-0.5 md:mx-0.5 md:w-[0.5px] sm:mx-[0.07rem] sm:w-[0.015rem] inline-block mx-1 array-bar bg-white"
                       key={id}
                       style={{ height: `${barHeight}%` }}
